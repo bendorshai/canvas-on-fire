@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Fire Canvas Bitch!
+        </title>
+        <script src="./scripts/model/direction.js"></script>
+        <script src="./scripts/model/energy.js"></script>
+        <script src="./scripts/model/matrix.js"></script>
+        <script src="./scripts/model/cell.js"></script>
+        <script src="./scripts/functions/renderer.js"></script>
+        <script src="./scripts/functions/painter.js"></script>
+        <script src="./scripts/functions/fuel.js"></script>
+       
+    </head>
+    <body>
+            <canvas id="canvas" style="border:1px solid">
+                
+            </canvas> 
+    </body> 
+        <style>
+        * { margin: 0; padding: 0;}
+
+        body, html { height:100%; }
+
+        #canvas {
+            position:absolute;
+            width: 80%;
+            height:80%;
+            top: 10%;
+            left:10%;
+        }
+        
+        body {
+            background-color: black;
+        }
+    </style>
+    <script  type="text/javascript">
+            // consts
+        var PLANCK = 3; // Pixels
+        var PLANCK_TIME = 7; // milisec
+        
+        function init() {
+            var canvas = document.getElementById("canvas");  
+        
+            var ctx = canvas.getContext("2d");
+
+            var height = Math.floor(canvas.height / PLANCK);
+            var width = Math.floor(canvas.width / PLANCK);
+
+            var matrix = new Matrix(width, height);  
+            
+            var loop = setInterval(function() {
+                seedFuel(matrix);
+                evaporate(matrix);
+                matrix = render(matrix, true);
+                ctx.clearRect(0, 0, canvas.width, canvas.height); // optional, check
+                drawMatrix(ctx, matrix)
+            }, PLANCK_TIME);
+        }
+        init();
+    </script>
+
+</html>-
+
+<!--
+
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.moveTo(0,0);
+ctx.lineTo(200,100);
+ctx.stroke();
+</script>
+-->
