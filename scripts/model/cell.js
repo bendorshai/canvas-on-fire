@@ -18,7 +18,12 @@ function Cell(energy, neighbors) {
     this.ofThe = {  // GREATEST! name E`v~~~er
         up: 0,
         right: 1,
-        left: 2
+        left: 2,
+        down: 3,
+        up_right: 4,
+        up_left: 5,
+        down_right: 6,
+        down_left: 7
     }
     
     // Pushes energy to neighbor if exists

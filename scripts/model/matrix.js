@@ -58,17 +58,59 @@ function Matrix(width, height) {
     function getNeighbors(x, y, matrix) {
         var dir = new Direction(0,0);
         var _neighbors = [];
+        
+        var isUp = y > 0;
+        var isDown = y < that.height-1;
+        var isLeft = x > 0;
+        var isRight = x < that.width-1;
             
-        if (y > 0) {
+        // Up
+        if (isUp) {
             _neighbors.push(matrix[x][y+dir.up().y])
         }
         
-        if (x < that.width-1) {
+        // Right
+        if (isRight) {
             _neighbors.push(matrix[x+dir.right().x][y])
         }
         
-        if (x > 0) {
+        // Left
+        if (isLeft) {
             _neighbors.push(matrix[x+dir.left().x][y])
+        }
+        
+        // Down
+        if (isDown) {
+            _neighbors.push(matrix[x][y+dir.down().y])
+        }
+        
+        // Up Right
+        if (isUp) {
+            _neighbors.push(matrix[x][y+dir.up().y])
+        }
+        
+        //  Up Right
+        if (isRight && isUp) {
+            var delta = dir.right().up();
+            _neighbors.push(matrix[x+delta.x][y+delta.y])
+        }
+        
+        //  Up Left
+        if (isUp && isLeft) {
+            delta = dir.left().up();
+            _neighbors.push(matrix[x+delta.x][y+delta.y])
+        }
+        
+        // Down Right
+        if (isDown && isRight) {
+            delta = dir.right().down();
+            _neighbors.push(matrix[x+delta.x][y+delta.y])
+        }
+        
+        // Down Left
+        if (isDown && isLeft) {
+            delta = dir.left().down();
+            _neighbors.push(matrix[x+delta.x][y+delta.y])
         }
         
         return _neighbors;

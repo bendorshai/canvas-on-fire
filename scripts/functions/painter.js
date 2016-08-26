@@ -39,5 +39,11 @@ function getColorByEnergyValueBitch(value) {
     
     to_the_source = "#50f050";
     
+    if (value <= 135) {
+        return to_the_source;
+    }
+    
+    to_the_source = "#ffffff";
+    
     return to_the_source;
 }
