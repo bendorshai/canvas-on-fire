@@ -16,7 +16,3 @@ function evaporate(matrix) {
         }
     });
 }
-
-
-// only in b branch
-// this comment is useless
