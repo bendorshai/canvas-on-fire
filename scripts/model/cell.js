@@ -29,3 +29,5 @@ function Cell(energy, neighbors) {
         }
     }
 }
+
+// useless comment here
